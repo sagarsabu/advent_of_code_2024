@@ -88,7 +88,7 @@ fn part_two() {
 
     let n_safe_records = INPUT.lines().fold(0, |acc, line| {
         // strictly increasing or decreasing in [1, 3] ranges
-        let mut current_level = line
+        let current_level = line
             .split_whitespace()
             .map(|record| record.parse::<i64>().unwrap())
             .collect::<Vec<_>>();
@@ -99,7 +99,7 @@ fn part_two() {
 
         if !safe {
             // all permutations with one element removed
-            for idx in (0..current_level.len()) {
+            for idx in 0..current_level.len() {
                 let mut level_perm = current_level.clone();
                 level_perm.remove(idx);
                 res = extract_safe_level_data(&level_perm);
